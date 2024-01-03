@@ -1,7 +1,8 @@
 import React from "react";
-import styles from "../../styles/Sidebar.module.css";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
+import styles from "../../styles/Sidebar.module.css";
 
 const Sidebar = () => {
   const { list } = useSelector(({ categories }) => categories);
@@ -27,11 +28,12 @@ const Sidebar = () => {
       </nav>
 
       <div className={styles.footer}>
-        <a href="/help" className={styles.link}>
+        <a href="/help" target="_blank" className={styles.link}>
           Help
         </a>
         <a
-          href="/help"
+          href="/terms"
+          target="_blank"
           className={styles.link}
           style={{ textDecoration: "underline" }}
         >

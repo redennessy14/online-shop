@@ -8,9 +8,9 @@ export const getCategories = createAsyncThunk(
     try {
       const res = await axios(`${BASE_URL}/categories`);
       return res.data;
-    } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error);
+    } catch (err) {
+      console.log(err);
+      return thunkAPI.rejectWithValue(err);
     }
   }
 );
@@ -22,14 +22,14 @@ const categoriesSlice = createSlice({
     isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(getCategories.pending, (state, { payload }) => {
+    builder.addCase(getCategories.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(getCategories.fulfilled, (state, { payload }) => {
       state.list = payload;
       state.isLoading = false;
     });
-    builder.addCase(getCategories.rejected, (state, { payload }) => {
+    builder.addCase(getCategories.rejected, (state) => {
       state.isLoading = false;
     });
   },
